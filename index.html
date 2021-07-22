@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div id="container">
+
+
+    <div id="container_left">
+        <div id="container_left_heading">
+            <h1 id="title">To-Do List</h1>
+            <h2 id="subtitle">Subtitle</h2>
+        </div>
+
+        <div id="entry_box">
+
+            
+
+                <label for="task">Task: </label>
+                <input type="text" id="task" name="task" required>
+
+                <br>
+
+                <label for="importance">Importance: </label><input type="range" id="importance" name="importance" min="1" max="5" required>
+
+                <br>
+
+                <label for="date_due">Date due:</label><input type="date" id="date_due" name="date_due">
+
+                <br>
+
+                <label for="time_due">Time due:</label><input type="time" id="time_due" name="time_due">
+
+                <br>
+
+
+                <label for="category">Category:</label><select id="category" name="category">
+                    <option id="category_blank">----</option>
+                    <option id="catgeory_personal">Personal</option>
+                    <option id="category_work">Work</option>
+                    <option id="category_school">School</option>
+                    <option id="category_other">Other</option>
+                    <input type="text" id="other_textBox">
+                    <br>
+                    <label for="color">Color:</label>
+                    <input type="color" id="color">
+                    <br>
+                </select>
+
+                <button id="add_task">Add Task</button>
+                <input type="reset">
+
+            
+        
+        </div>
+
+        <br>
+
+        <div id="container_left_buttons">
+        
+            <button>Finished Tasks</button>
+            <button>History</button>
+        
+        
+        </div>
+
+    </div>
+
+
+
+
+    <div id="container_right">
+    
+        <div id="task_container">
+
+
+        <ul id="task_list">
+        
+            <li class="task_item">
+
+                <div class="task_item_top_selections">
+                    <img src="edit.png" class="task_item_edit" title="edit task">
+                    <img src="red_x.png" class="task_item_remove" title="remove task">
+                </div>
+
+                <div class="task_item_bottom">
+
+                    <div class="task_item_information">
+                    Task: Take out Garbage</br>
+                    Importance: 3</br>
+                    Due By: 4/20/69</br>
+                    Category: Personal</br>
+                    </div>
+
+                    <div class="task_item_check">
+                        <img src="green_check.png" id="task_item_checkmark" title="complete task">
+                    </div>
+
+                </div>        
+            </li>
+
+            <li class="task_item">
+
+                <div class="task_item_top_selections">
+                    <img src="edit.png" class="task_item_edit" title="edit task">
+                    <img src="red_x.png" class="task_item_remove" title="remove task">
+                </div>
+
+                <div class="task_item_bottom">
+
+                    <div class="task_item_information">
+                    Task: Take out Garbage</br>
+                    Importance: 3</br>
+                    Due By: 4/20/69</br>
+                    Category: Personal</br>
+                    </div>
+
+                    <div class="task_item_check">
+                        <img src="green_check.png" id="task_item_checkmark" title="complete task">
+                    </div>
+
+                </div>        
+            </li>
+        
+        
+        </ul>
+
+        </div>
+       
+    </div>
+
+
+
+
+</div>
+    
+</body>
+<script src="script.js"></script>
+</html>
