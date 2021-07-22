@@ -1,16 +1,46 @@
 "use strict";
 
+
+
+
+
+
+
+
+
 let add_task = document.getElementById('add_task');
+let other_category_description = document.getElementById('other_textBox');
+let reset_button = document.getElementById('reset_button');
+
+/*Check to see if Category is in "Other"*/
+setInterval(function(){
+    if(document.getElementById('category').value == 'Other'){
+        other_category_description.classList.remove('hidden');
+    }else if(document.getElementById('category').value != 'Other'){
+        other_category_description.classList.add('hidden');
+    };
+}, 50);
 
 add_task.addEventListener('click',function(){
-    let task2 = document.getElementById('task').value;
+    let task = document.getElementById('task').value;
     let importance = document.getElementById('importance').value; 
     let date_due = document.getElementById('date_due').value; 
     let time_due = document.getElementById('time_due').value;
-    let category = document.getElementById('category').value;
+    let category;
+    let color = document.getElementById('color').value;
+    alert(color);
+
+    if(document.getElementById('category').value == 'Other'){
+        category = other_category_description.value;
+    }else{
+        category = document.getElementById('category').value;
+    }
+
+
 
     let elem = document.createElement('li');
     elem.classList.add('task_item');
+    elem.style.border = `5px solid ${color}`
     elem.innerHTML = `
     
     <div class="task_item_top_selections">
@@ -21,10 +51,10 @@ add_task.addEventListener('click',function(){
     <div class="task_item_bottom">
 
                     <div class="task_item_information">
-                    Task: Take out Garbage</br>
-                    Importance: 3</br>
-                    Due By: 4/20/69</br>
-                    Category: Personal</br>
+                    Task: ${task}</br>
+                    Importance: ${importance}</br>
+                    Due By: ${date_due} - ${time_due}</br>
+                    Category: ${category}</br>
                     </div>
 
                     <div class="task_item_check">
@@ -33,10 +63,19 @@ add_task.addEventListener('click',function(){
 
                 </div>
     `
-
-
-
-
     document.getElementById('task_list').insertAdjacentHTML('beforeend', elem.outerHTML);
+});
 
+function reset(){
+let task = document.getElementById('task').value = "";
+    let importance = document.getElementById('importance').value = 3;
+    let date_due = document.getElementById('date_due').value = new Date();
+    let time_due = document.getElementById('time_due').value = new Date();
+    let category = document.getElementById('category').value = "----";
+    let color = document.getElementById('color').value = "00000";
+};
+
+
+reset_button.addEventListener('click',function(){
+    reset()
 });
