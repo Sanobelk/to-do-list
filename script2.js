@@ -5,8 +5,9 @@ let other_category_description = document.getElementById('other_textBox');
 let reset_button = document.getElementById('reset_button');
 let completed_task_buttons = document.getElementsByClassName('task_item_check');
 
-let finished_tasks = [];
+let task_count = 0;
 let task_history = [];
+let tasks_completed = [];
 
 class Task{
     constructor(task, importance, date_due, time_due, category, color){
@@ -16,20 +17,25 @@ class Task{
         this.time_due = time_due;
         this.category = category;
         this.color = color;
+        this.checkImg = 'green_check.png';
     }
 }
 
 
 /*Check to see if Category is in "Other"*/
-setInterval(function(){
+
+function checkOtherBox(){
     if(document.getElementById('category').value == 'Other'){
         other_category_description.classList.remove('hidden');
     }else if(document.getElementById('category').value != 'Other'){
         other_category_description.classList.add('hidden');
     };
-}, 50);
+}
 
-add_task.addEventListener('click',function(){
+
+/*Add Task to List*/
+
+function addTaskToList(){
     let task = document.getElementById('task').value;
     let importance = document.getElementById('importance').value; 
     let date_due = document.getElementById('date_due').value; 
@@ -44,35 +50,44 @@ add_task.addEventListener('click',function(){
 
     let temp_task = new Task(task,importance,date_due,time_due,category,color);
     task_history.push(temp_task);
+    createListElement(temp_task);
+}
 
 
+
+function createListElement(obj){
     let elem = document.createElement('li');
     elem.classList.add('task_item');
-    elem.style.border = `5px solid ${temp_task.color}`
+    elem.style.border = `3px solid ${obj.color}`
     elem.innerHTML = `
     
     <div class="task_item_top_selections">
-                    <img src="edit.png" class="task_item_edit" title="edit task">
-                    <img src="red_x.png" class="task_item_remove" title="remove task">
+
                 </div>
 
     <div class="task_item_bottom">
 
                     <div class="task_item_information">
-                    Task: ${temp_task.task}</br>
-                    Importance: ${temp_task.importance}</br>
-                    Due By: ${temp_task.date_due} - ${temp_task.time_due}</br>
-                    Category: ${temp_task.category}</br>
+                    Task: ${obj.task}</br>
+                    Importance: ${obj.importance}</br>
+                    Due By: ${obj.date_due} - ${obj.time_due}</br>
+                    Category: ${obj.category}</br>
                     </div>
 
                     <div class="task_item_check">
-                        <img src="green_check.png" id="task_item_checkmark" title="complete task">
+                        <img src=${obj.checkImg} id="task_item_${task_count}"
+                        title="complete task" onclick="completeTask(${task_count})">
                     </div>
 
                 </div>
     `
-    document.getElementById('task_list').insertAdjacentHTML('beforeend', elem.outerHTML);
-});
+
+    
+
+
+    document.getElementById('task_list').insertAdjacentHTML('afterbegin', elem.outerHTML);
+    console.log(task_history);
+};
 
 /*Reset Form*/
 function reset(){
@@ -90,51 +105,7 @@ reset_button.addEventListener('click',function(){
 });
 
 /*Completing  Tasks */
-
-setInterval(()=>{
-    for(let buttons of completed_task_buttons){
-    buttons.addEventListener('click',function(){
-        let task_innerHTML = buttons.closest('li').innerHTML;
-        //buttons.addToFinishedTask(task_innerHTML);
-        buttons.closest('li').remove();
-    });
-}
-},500);
-
-
-
-
-/*Check Finished Tasks*/
-
-let display_finished_tasks = document.getElementById('finished_tasks_button');
-
-display_finished_tasks.addEventListener('click',function(){
-    document.getElementById('finished_tasks_modal').classList.remove('hidden');
-})
-
-/*Add to Finished Tasks*/
-
-function addToFinishedTask(obj){
-    for(let item of task_history){
-        let elem = document.createElement('li');
-        elem.innerHTML = `Task:${item.task}`;
-        document.getElementById('finished_tasks_list').insertAdjacentHTML('beforeend',elem.outerHTML);
-    }
-}
-
-/*Check History*/
-
-let check_history = document.getElementById('history_button');
-
-check_history.addEventListener('click',function(){
-    for(let i of task_history){
-        let elem = document.createElement('li');
-        elem.innerHTML = (`${i.task}
-        Importance:${i.importance}\n
-        Due: ${i.date_due} - ${i.time_due}\n
-        Category: ${i.category}\n
-        Color: ${i.color}
-        `);
-        document.getElementById('history_tasks_list').insertAdjacentHTML('beforeend',elem.outerHTML);
-    }
-})
+function completeTask(int){
+    task_history[int].finished = true;
+    tasks_completed.push(task_history[int]);
+};

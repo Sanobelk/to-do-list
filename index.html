@@ -40,7 +40,7 @@
                 <br>
 
 
-                <label for="category">Category:</label><select id="category" name="category">
+                <label for="category">Category:</label><select id="category" name="category" onchange="checkOtherBox()">
                     <option id="category_blank">----</option>
                     <option id="catgeory_personal">Personal</option>
                     <option id="category_work">Work</option>
@@ -53,7 +53,7 @@
                     <br>
                 </select>
 
-                <button id="add_task">Add Task</button>
+                <button id="add_task" onclick="addTaskToList()">Add Task</button>
                 <input type="button" id="reset_button" value="Reset">
 
             
@@ -61,14 +61,6 @@
         </div>
 
         <br>
-
-        <div id="container_left_buttons">
-        
-            <button id="finished_tasks_button">Finished Tasks</button>
-            <button id="history_button">History</button>
-        
-        
-        </div>
 
     </div>
 
@@ -81,52 +73,6 @@
 
 
         <ul id="task_list">
-        
-            <li class="task_item">
-
-                <div class="task_item_top_selections">
-                    <img src="edit.png" class="task_item_edit" title="edit task">
-                    <img src="red_x.png" class="task_item_remove" title="remove task">
-                </div>
-
-                <div class="task_item_bottom">
-
-                    <div class="task_item_information">
-                    Task: Take out Garbage</br>
-                    Importance: 3</br>
-                    Due By: 4/20/69</br>
-                    Category: Personal</br>
-                    </div>
-
-                    <div class="task_item_check">
-                        <img src="green_check.png" id="task_item_checkmark" title="complete task">
-                    </div>
-
-                </div>        
-            </li>
-
-            <li class="task_item">
-
-                <div class="task_item_top_selections">
-                    <img src="edit.png" class="task_item_edit" title="edit task">
-                    <img src="red_x.png" class="task_item_remove" title="remove task">
-                </div>
-
-                <div class="task_item_bottom">
-
-                    <div class="task_item_information">
-                    Task: Take out Garbage</br>
-                    Importance: 3</br>
-                    Due By: 4/20/69</br>
-                    Category: Personal</br>
-                    </div>
-
-                    <div class="task_item_check">
-                        <img src="green_check.png" id="task_item_checkmark" title="complete task">
-                    </div>
-
-                </div>        
-            </li>
         
         
         </ul>
@@ -160,7 +106,6 @@
     
 </div>
 
-    
 </body>
-<script src="script.js"></script>
+ <script src="script2.js"></script>
 </html>

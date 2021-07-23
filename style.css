@@ -4,7 +4,6 @@
     font-size:16px;
 
 }
-
 .hidden{
     display:none;
 }
@@ -20,12 +19,10 @@
 
 #container_left{
     width:30%;
-    background-color:pink;
 }
 
 #container_right{
     width:70%;
-    background-color:plum;
     overflow-y:scroll;
 }
 
@@ -59,19 +56,17 @@
     display:flex;
     justify-content:center;
     align-items:center;
-    background-color:lightgreen;
 }
 
 #task_container{
-    background-color:pink;
     width:95%;
     height:95%;
 }
 
 #task_list{
-    background-color:tomato;
     padding:5px;
     margin:0;
+    list-style-type:none;
 }
 
 .task_item{
@@ -88,25 +83,19 @@
 }
 
 .task_item_bottom{
-    background-color:wheat;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
 .task_item_information{
-    background-color:violet;
     width:90%;
 }
 
 .task_item_check{
-    
-    background-color:thistle;
-}
-
-#task_item_checkmark{
     width:50px;
     height:auto;
+    cursor:pointer;
 }
 
 /*Finished Tasks Modal*/
