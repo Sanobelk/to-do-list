@@ -111,6 +111,12 @@ input{
 #display_options button{
     width:150px;
     height:30px;
+    font-weight:bold;
+    
+}
+
+.active{
+    background-color:orange;
 }
 
 
@@ -177,7 +183,6 @@ input{
 }
 
 #history_container{
-    background-color:pink;
     width:95%;
     height:95%;
 }
@@ -189,7 +194,12 @@ input{
 }
 
 #completed_container{
-    background-color:lightblue;
     width:95%;
     height:95%;
+}
+
+#completed_list{
+    padding:5px;
+    margin:0;
+    list-style-type:none;
 }

@@ -84,6 +84,8 @@ function createListElement(obj){
 
     document.getElementById('task_list').insertAdjacentHTML('afterbegin', elem.outerHTML);
     console.log(task_history);
+    addToHistoryList(obj);
+    
     task_count++;
 };
 
@@ -108,19 +110,41 @@ function completeTask(int){
     tasks_completed.push(task_history[int]);
 
     //removes from list
-    let temp = document.getElementById(`task_item_${int}`).closest('li').remove();
+    document.getElementById(`task_item_${int}`).closest('li').remove();
 
-    addToHistoryList(task_history[int]);
-
+    //adds to Completed List. 
+    addToCompleteList(task_history[int]);
 
 };
 
-/*Adding to History List*/
-function addToHistoryList(obj){
-    alert(obj)
+/*Adding to Completed List*/ 
+
+function addToCompleteList(obj){
     let temp = document.createElement('li');
     temp.classList.add('task_item');
-    temp.innerHTML = `<div class="task_item_top_selections" style="background-color:${obj.color}">
+    temp.innerHTML = `<div class="task_item_top_selections" style="background-color:lightgreen">
+                </div>
+
+    <div class="task_item_bottom">
+
+                    <div class="task_item_information">
+                    Task: ${obj.task}</br>
+                    Importance: ${obj.importance}</br>
+                    Due By: ${obj.date_due} - ${obj.time_due}</br>
+                    Category: ${obj.category}</br>
+                    </div>
+                </div>
+    `;
+    document.getElementById('completed_list').append(temp);
+
+}
+
+/*Adding to History List*/
+function addToHistoryList(obj){
+    let temp = document.createElement('li');
+    temp.classList.add('task_item');
+    temp.innerHTML = `<div class="task_item_top_selections" 
+    style="background-color:gray">
                 </div>
 
     <div class="task_item_bottom">
@@ -147,13 +171,21 @@ function deleteTask(int){
 /*Show Task History*/
 
 document.getElementById('task_history').addEventListener('click',function(){
+    //make sure Completed Tasks is set back to default before continnuing
+    document.getElementById(`completed_tasks`).setAttribute("toggle",0);
+    document.getElementById(`completed_tasks`).innerHTML=`Completed Tasks`;
+    document.getElementById('completed_container').hidden = true;
+    
+
     if(this.getAttribute("toggle") == 0){
         this.setAttribute("toggle",1);
+        this.classList.toggle('active');
         document.getElementById('task_container').hidden = true;
         this.innerHTML = 'Display To-Do List';
         document.getElementById('add_task').disabled=true;
         document.getElementById('history_container').hidden=false;
     }else{
+    this.classList.toggle('active');
     this.setAttribute("toggle",0);
     document.getElementById('task_container').hidden = false;
     this.innerHTML = 'Task History';
@@ -165,11 +197,22 @@ document.getElementById('task_history').addEventListener('click',function(){
 /*Show Completed Tasks*/
 
 document.getElementById('completed_tasks').addEventListener('click',function(){
+    document.getElementById(`task_history`).setAttribute("toggle",0);
+    document.getElementById('history_container').hidden = true;
     if(this.getAttribute("toggle") == 0){
         this.setAttribute("toggle",1);
+        this.classList.toggle('active');
         document.getElementById('task_container').hidden = true;
+        document.getElementById('completed_container').hidden=false;
+        document.getElementById('add_task').disabled=true;
+        this.innerHTML = 'Display To-Do-List';
+        document.getElementById('task_history').innerHTML = 'Task History';
     }else{
     this.setAttribute("toggle",0);
+    this.classList.toggle('active');
     document.getElementById('task_container').hidden = false;
+    document.getElementById('add_task').disabled=false;
+    this.innerHTML = 'Completed Tasks';
+    document.getElementById('completed_container').hidden=true;
     }
 })
