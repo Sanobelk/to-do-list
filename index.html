@@ -15,7 +15,7 @@
     <div id="container_left">
         <div id="container_left_heading">
             <h1 id="title">To-Do List</h1>
-            <h2 id="subtitle">Subtitle</h2>
+            <h2 id="subtitle">Placeholder</h2>
         </div>
 
         <div id="entry_box">
@@ -27,7 +27,7 @@
 
                 <br>
 
-                <label for="importance">Importance: </label><input type="range" id="importance" name="importance" min="1" max="5" required>
+                <label for="importance" id="importance_label">Importance: </label><input type="range" id="importance" name="importance" min="1" max="5" required>
 
                 <br>
 
@@ -53,8 +53,10 @@
                     <br>
                 </select>
 
+                <div id="button_container">
                 <button id="add_task" onclick="addTaskToList()">Add Task</button>
                 <input type="button" id="reset_button" value="Reset">
+                </div>
 
             
         
@@ -62,7 +64,15 @@
 
         <br>
 
+        <div id="display_options">
+
+            <button id="task_history" toggle="0">Task History</button>
+            <button id="completed_tasks" toggle="0">Completed Tasks</button>
+
+        </div>
+       
     </div>
+
 
 
 
@@ -72,38 +82,38 @@
         <div id="task_container">
 
 
-        <ul id="task_list">
-        
-        
-        </ul>
+            <ul id="task_list">
+            
+            
+            </ul>
 
+        </div>
+
+        <div id="history_container" hidden>
+
+            <ul id="history_list">
+            
+            
+            
+            </ul>
+
+
+        </div>
+
+
+        <div id="completed_container" hidden>
+        
+            <ul id="completed_list">
+            
+            
+            
+            </ul>
+        
+        
         </div>
        
     </div>
 
-</div>
-
- <div id="finished_tasks_modal"class="hidden">
-    
-        <ol id="finished_tasks_list">
-        
-        
-        </ol>
-    
-    
-    
-    
-</div>
-
-<div id="history_tasks_modal">
-    
-        <ol id="history_tasks_list">
-        
-        </ol>
-    
-    
-    
-    
 </div>
 
 </body>

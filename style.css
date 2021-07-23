@@ -46,6 +46,72 @@
 
 /****Left Container****/
 
+#container_left h1,h2, label{
+    font-family:arial;
+    padding:0;
+    margin:0;
+}
+
+#container_left_heading{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+input{
+    vertical-align:middle; /*I dont know why this works but it does...*/
+}
+
+#task{
+    margin-left:50px;
+}
+#date_due{
+    margin-left:23px;
+}
+
+#time_due{
+    margin-left:21px;
+}
+#category{
+    margin-left:22px;
+}
+#color{
+    margin-left:44px;
+}
+
+#button_container{
+    display:flex;
+    justify-content:space-around;
+    margin-top:10px;
+}
+
+#add_task, #reset_button{
+    width:150px;
+    height:30px;
+}
+
+
+
+
+#entry_box{
+    padding:10px;
+    width:90%;
+    margin:auto;
+    border-radius:10px;
+    background-color:lightblue;
+}
+
+#display_options{
+    display:flex;
+    justify-content:space-around;
+    margin-bottom:20px;
+}
+
+#display_options button{
+    width:150px;
+    height:30px;
+}
 
 
 
@@ -71,8 +137,8 @@
 
 .task_item{
     background-color:whitesmoke;
-    padding:5px;
     margin-bottom:10px;
+    box-shadow:5px 5px 5px gray;
 }
 
 .task_item_top_selections{
@@ -86,6 +152,9 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
+    padding:10px;
+    font-family:arial;
+    line-height:1.6rem;
 }
 
 .task_item_information{
@@ -98,10 +167,29 @@
     cursor:pointer;
 }
 
-/*Finished Tasks Modal*/
+.complete_task{
+    width:50px;
+    height:Auto;
+}
 
-#finished_tasks_modal{
-    background-color:lightgray;
-    margin:auto;
-    position:absolute;
+.delete_task{
+    cursor:pointer;
+}
+
+#history_container{
+    background-color:pink;
+    width:95%;
+    height:95%;
+}
+
+#history_list{
+    padding:5px;
+    margin:0;
+    list-style-type:none;
+}
+
+#completed_container{
+    background-color:lightblue;
+    width:95%;
+    height:95%;
 }
